@@ -1,0 +1,6 @@
+[Unit]
+Description=Simple CI for AD CTF
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/simpleci update

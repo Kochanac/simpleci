@@ -1,0 +1,6 @@
+
+repo_link: https://github.com/Kochanac/simpleci # valid git clone $link link
+tg_bot:
+  tg_token: 
+  chat_register_password: loxlox
+  webhook_send_password: suk

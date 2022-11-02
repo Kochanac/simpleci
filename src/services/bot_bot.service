@@ -1,0 +1,6 @@
+[Unit]
+Description=Telegram bot that registers user chats into a file
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/simpleci update

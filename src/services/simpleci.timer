@@ -1,0 +1,8 @@
+[Unit]
+Description=Run simpleci every 5 seconds
+
+[Timer]
+OnUnitActiveSec=5s
+
+[Install]
+WantedBy=timers.target

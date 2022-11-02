@@ -25,13 +25,13 @@ git clone https://github.com/Kochanac/simpleci && cd simpleci;
 make install
 ```
 
-/etc/simpleci/
+/etc/simpleci/config.yaml
 ```yaml
 
-# HARDCODED 15 update_rate: 15 # duration in seconds
+# HARDCODED 5 update_rate: 5 # duration in seconds
 repo_link: https://github.com/Kochanac/simpleci # valid git clone $link link
 tg_bot:
-	secret: <TG BOT SECRET>
-	chat: 10x # substr in chat name
+  secret: <TG BOT SECRET>
+  chat: 10x # substr in chat name
 
 ```

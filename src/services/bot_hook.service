@@ -1,0 +1,6 @@
+[Unit]
+Description=Webhook to send telegram messages
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/simpleci update
