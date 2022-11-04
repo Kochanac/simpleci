@@ -26,6 +26,7 @@ git clone https://github.com/Kochanac/simpleci && cd simpleci;
 # edit config.yaml
 # скопировать ключи от приватной репы в свой гитхаб чтобы можно было авторизовываться
 sudo make install-ubuntu # requires apt, docker, docker-compose
+simpleci init
 ```
 
 /etc/simpleci/config.yaml

@@ -13,7 +13,7 @@ readconfig() {
 
 send_to_tg() {
 	echo -e $1
-	curl $TG$(echo -e $1 | base64) 1>/dev/null 2>/dev/null
+	curl $TG$(echo -e $1 | base64 -w 0) 1>/dev/null 2>/dev/null
 }
 
 weird_cat() {
@@ -66,6 +66,8 @@ find_services() {
 }
 
 init() {
+	send_to_tg "😎 simpleci init"
+
 	mkdir -p $REPO_PATH
 	
 	echo "git clone"
