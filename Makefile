@@ -21,18 +21,21 @@ install-ubuntu: config-bot
 	cp src/simpleci.bash $(INSTALL_DIR)/simpleci
 	chmod +x $(INSTALL_DIR)/simpleci
 
-	mkdir /etc/simpleci
+	cp src/format_tg_config.bash $(INSTALL_DIR)/format_tg_config
+	chmod +x $(INSTALL_DIR)/format_tg_config
+
+	mkdir -p /etc/simpleci
 	cp ./config.yaml $(CONFIG)
 
 	mkdir -p /opt/simpleci
 
 	cp -r src/bot-hook /opt/simpleci/bot
 
-	echo $(whereis python3)
-	echo $(whereis uvicorn)
+	echo $$(whereis python3)
+	echo $$(whereis uvicorn)
 
-	cat src/services/bot_bot.service | sed "s|%PYTHON3%|$(whereis python3 | cut -d' ' -f2)|" > /etc/systemd/system/simpleci_bot.service
-	cat src/services/bot_hook.service | sed "s|%PYTHON3%|$(whereis uvicorn | cut -d' ' -f2)|" > /etc/systemd/system/simpleci_tg_hook_service.service
+	cat src/services/bot_bot.service | format_tg_config > /etc/systemd/system/simpleci_bot.service
+	cat src/services/bot_hook.service | format_tg_config > /etc/systemd/system/simpleci_tg_hook_service.service
 
 	cp src/services/simpleci* /etc/systemd/system/
 

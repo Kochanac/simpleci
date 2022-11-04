@@ -4,4 +4,10 @@ Description=Telegram bot that registers user chats into a file
 [Service]
 Type=simple
 WorkingDirectory=/opt/simpleci/bot/
+Environment="BOT_TOKEN=%bot_token%"
+Environment="BOT_CHAT_PASSWORD=%bot_chat_password%"
+Environment="BOT_WEBHOOK_PASSWORD=%bot_webhook_password%"
 ExecStart=%PYTHON3% bot.py
+
+[Install]
+WantedBy=multi-user.target
