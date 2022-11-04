@@ -9,10 +9,14 @@ webhook_register_pass = $$(niet tg_bot.webhook_send_password $(CONFIG))
 config-bot:
 	echo [] > /etc/tg_hook_chats.json
 	chmod o+rw /etc/tg_hook_chats.json
-	pip install -r src/bot-hook/requirements.txt
 
-install: config-bot
+
+install-ubuntu: config-bot
+	apt update
+	apt install -y python3 python3-pip
+
 	pip install niet
+	pip install -r src/bot-hook/requirements.txt
 
 	cp src/simpleci.bash $(INSTALL_DIR)/simpleci
 	chmod +x $(INSTALL_DIR)/simpleci
@@ -20,11 +24,30 @@ install: config-bot
 	mkdir /etc/simpleci
 	cp ./config.yaml $(CONFIG)
 
-	# apt install git
+	mkdir -p /opt/simpleci
+
+	cp -r src/bot-hook /opt/simpleci/bot
+
+	echo $(whereis python3)
+	echo $(whereis uvicorn)
+
+	cat src/services/bot_bot.service | sed "s|%PYTHON3%|$(whereis python3 | cut -d' ' -f2)|" > /etc/systemd/system/simpleci_bot.service
+	cat src/services/bot_hook.service | sed "s|%PYTHON3%|$(whereis uvicorn | cut -d' ' -f2)|" > /etc/systemd/system/simpleci_tg_hook_service.service
+
+	cp src/services/simpleci* /etc/systemd/system/
+
+	systemctl start simpleci_bot.service
+	systemctl start simpleci_tg_hook_service.service
+	systemctl start simpleci.service
+	systemctl start simpleci.timer
+
+	systemctl enable simpleci_bot.service
+	systemctl enable simpleci_tg_hook_service.service
+	systemctl enable simpleci.service
+	systemctl enable simpleci.timer
 
 
-
-run-tg-bot:
+test-run-tg-bot:
 	echo $(tg_token)
 	export BOT_TOKEN=$(tg_token); \
 	export BOT_CHAT_PASSWORD=$(bot_chat_pass); \

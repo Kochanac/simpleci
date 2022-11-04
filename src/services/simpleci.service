@@ -3,4 +3,4 @@ Description=Simple CI for AD CTF
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/simpleci update
+ExecStart=/usr/bin/simpleci check

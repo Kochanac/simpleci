@@ -3,4 +3,5 @@ Description=Webhook to send telegram messages
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/simpleci update
+WorkingDirectory=/opt/simpleci/bot/
+ExecStart=%uvicorn% hook:app --port 10666

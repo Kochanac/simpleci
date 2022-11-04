@@ -24,7 +24,8 @@ git push # -> master
 ```bash
 git clone https://github.com/Kochanac/simpleci && cd simpleci;
 # edit config.yaml
-make install
+# скопировать ключи от приватной репы в свой гитхаб чтобы можно было авторизовываться
+sudo make install-ubuntu # requires apt, docker, docker-compose
 ```
 
 /etc/simpleci/config.yaml
@@ -39,3 +40,6 @@ tg_bot:
   webhook_send_password: suk
 
 ```
+
+
+TODO: вынести отправку сообщений из вебхука

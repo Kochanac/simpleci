@@ -3,4 +3,5 @@ Description=Telegram bot that registers user chats into a file
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/simpleci update
+WorkingDirectory=/opt/simpleci/bot/
+ExecStart=%PYTHON3% bot.py
