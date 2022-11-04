@@ -21,7 +21,7 @@ pool_time = 2 # seconds
 
 api = f"https://api.telegram.org/bot{TOKEN}/"
 
-def send_message(chat_id, text, fmt="MarkdownV2"):
+def send_message(chat_id, text, fmt="HTML"):
 	data = {"chat_id": chat_id, "text": text}
 	if fmt != "plain":
 		data["parse_mode"] = fmt

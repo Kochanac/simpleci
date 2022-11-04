@@ -20,6 +20,8 @@ install: config-bot
 	mkdir /etc/simpleci
 	cp ./config.yaml $(CONFIG)
 
+	# apt install git
+
 
 
 run-tg-bot:

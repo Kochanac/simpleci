@@ -13,15 +13,17 @@ git push # -> master
 ```
 
 После этого скрипты автоматически запускают `docker-compose up --build` в измененном сервисе.
-- Об процессах уведомлять в телеграм бота
-- При упавшем `docker-compose up` уведомлять в телеграм-бота (может в чате?)
-- ? мб при упавшем контейнере тоже уведомлять
+- Об процессах уведомлять в телеграм
+- При упавшем `docker-compose up` уведомлять в телеграм
+- Если `docker-compose up` падает, то пытаться откатиться на одну версию вниз и ребилднуть её
+- TODO: При упавшем контейнере тоже уведомлять
 
 ### Установка и конфигурация
 
 Установка
 ```bash
 git clone https://github.com/Kochanac/simpleci && cd simpleci;
+# edit config.yaml
 make install
 ```
 
@@ -30,8 +32,10 @@ make install
 
 # HARDCODED 5 update_rate: 5 # duration in seconds
 repo_link: https://github.com/Kochanac/simpleci # valid git clone $link link
+clone_path: /home/services/
 tg_bot:
-  secret: <TG BOT SECRET>
-  chat: 10x # substr in chat name
+  tg_token: <TG-BOT-SECRET>
+  chat_register_password: loxlox
+  webhook_send_password: suk
 
 ```

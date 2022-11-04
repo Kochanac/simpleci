@@ -1,6 +1,8 @@
 
-repo_link: https://github.com/Kochanac/simpleci # valid git clone $link link
+repo_link: /Users/kveselov/ctf/proj/test # valid git clone $link link
+repo_path: /tmp/lox
+tg_hook: http://localhost:10666/
 tg_bot:
-  tg_token: 
+  tg_token: 5504706081:AAGPrz8Hrpdp7VuUgm0USU_eyoz1KzJ3FTM
   chat_register_password: loxlox
   webhook_send_password: suk
