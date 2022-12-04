@@ -8,6 +8,7 @@ readconfig() {
 	HOOK_PASSWD="$(niet tg_bot.webhook_send_password $CONFIG_PATH)"
 	TG="$(niet tg_hook $CONFIG_PATH)sendbase/$HOOK_PASSWD/"
 	REPO_PATH=$(niet repo_path $CONFIG_PATH)
+	REPO_BRANCH=$(niet branch $CONFIG_PATH)
 }
 
 
@@ -134,7 +135,7 @@ rollback() {
 
 check() {
 	cd $REPO_PATH
-	branch=$(git branch --show-current)
+	branch=$REPO_BRANCH
 
 	git remote update
 

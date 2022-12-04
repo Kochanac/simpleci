@@ -1,6 +1,7 @@
 
 repo_link: /Users/kveselov/ctf/proj/test # valid git clone $link link
 repo_path: /tmp/lox
+branch: master
 tg_hook: http://localhost:10666/
 tg_bot:
   tg_token: 5504706081:AAGPrz8Hrpdp7VuUgm0USU_eyoz1KzJ3FTM

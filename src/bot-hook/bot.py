@@ -15,11 +15,11 @@ CHAT_PASSWORD = str(environ.get("BOT_CHAT_PASSWORD", token_hex()))
 WEBHOOK_PASSWORD = str(environ.get("BOT_WEBHOOK_PASSWORD", token_hex()))
 
 
-print(f"{CHAT_PASSWORD = }\n{WEBHOOK_PASSWORD = }")
+# print(f"{CHAT_PASSWORD = }\n{WEBHOOK_PASSWORD = }")
 
 pool_time = 2 # seconds
 
-api = f"https://api.telegram.org/bot{TOKEN}/"
+api = "https://api.telegram.org/bot" + TOKEN + "/"
 
 def send_message(chat_id, text, fmt="HTML"):
 	data = {"chat_id": chat_id, "text": text}
@@ -56,7 +56,7 @@ def get_chats():
 
 def broadcast_message(message):
 	for chat in get_chats():
-		print(f"sending {message} to {chat = }")
+		print("sending {} to chat = {}".format(message, chat))
 		send_message(chat, message)
 
 
@@ -65,7 +65,7 @@ def handle_update(request: "json"):
 	text = request["message"]["text"]
 
 	if CHAT_PASSWORD in text:
-		send_message(chat_id, f"registered chat_id {chat_id}", fmt="plain")
+		send_message(chat_id, "registered chat_id " + str(chat_id), fmt="plain")
 		register_chat_id(chat_id)
 
 
