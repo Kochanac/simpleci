@@ -130,7 +130,7 @@ rollback() {
 
 	git reset --hard HEAD~1 || send_to_tg "<b>пизда</b>"
 
-	rebuild_services $1 || rollback $1
+	rebuild_services $1 # || rollback $1
 }
 
 check() {
